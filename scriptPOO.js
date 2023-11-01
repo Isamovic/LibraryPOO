@@ -3,10 +3,10 @@
 console.log("test");
 class Book {
   constructor(title, author, pages, read) {
-    this.title = title.value;
-    this.author = author.value;
-    this.pages = pages.value;
-    this.read = read.value;
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
   }
 }
 
@@ -22,7 +22,7 @@ class Library {
     this.title = document.querySelector("#title");
     this.read = document.querySelector("#read");
 
-    this.addbtn.addEventListener("click", function () {
+    this.addbtn.addEventListener("click", () => {
       this.form.classList.toggle("hidden");
     });
 
@@ -31,9 +31,11 @@ class Library {
       this.container.classList.remove("hidden");
       this.addBookToLibrary();
       this.form.classList.toggle("hidden");
+      this.displayBook(this.#myLibrary);
+      this.valeurAZero();
     });
 
-    document.addEventListener("click", function (event) {
+    document.addEventListener("click", (event) => {
       this.target = event.target.closest(".imgdelete");
       if (this.target) {
         this.#myLibrary.splice(Number(target.getAttribute("id")), 1);
@@ -42,15 +44,26 @@ class Library {
     });
   }
 
-  addBookToLibrary(title, author, pages, read) {
-    this.#myLibrary.push(new Book(title, author, pages, read));
+  addBookToLibrary() {
+    this.titre = this.title.value;
+    this.auteur = this.author.value;
+    this.page = this.pages.value;
+    this.lu = this.read.value;
+    this.#myLibrary.push(new Book(this.titre, this.auteur, this.page, this.lu));
+  }
+
+  valeurAZero() {
+    this.title.value = "";
+    this.author.value = "";
+    this.pages.value = "";
+    this.read.value = "";
   }
 
   displayBook(arrbook) {
-    container.innerHTML = "";
-    arrbook.forEach(function (book, index) {
+    this.container.innerHTML = "";
+    arrbook.forEach((book, index) => {
       const { title, author, pages } = book;
-      container.insertAdjacentHTML(
+      this.container.insertAdjacentHTML(
         "beforeend",
         `<div class="book-container" >
           <div class="cont-top">

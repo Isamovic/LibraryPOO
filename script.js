@@ -49,7 +49,7 @@ function addBookToLibrary() {
 
 function displayBook(arrbook) {
   container.innerHTML = "";
-  arrbook.forEach(function (book, index) {
+  arrbook.forEach((book, index) => {
     const { title, author, pages } = book;
     container.insertAdjacentHTML(
       "beforeend",
